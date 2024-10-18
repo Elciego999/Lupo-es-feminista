@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo no ser como Lupo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            color: #d9534f;
+        }
+        h2 {
+            color: #5bc0de;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .warning {
+            color: #d9534f;
+            font-weight: bold;
+            text-align: center;
+        }
+        .test-container {
+            margin-top: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            display: none;
+        }
+        .good-result {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .bad-result {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cómo no ser como Lupo</h1>
+
+        <h2>La historia de José Pino Lupo</h2>
+
+        <p>José Pino Lupo era un joven talentoso en el fútbol, pero debido a malas decisiones como fumar, beber alcohol y una traición emocional, su carrera deportiva y su vida social se vinieron abajo. Esta historia es un recordatorio de cómo nuestras elecciones afectan nuestro futuro.</p>
+
+        <div class="test-container">
+            <h2>Test: ¿Estás siguiendo los pasos de Lupo?</h2>
+
+            <form id="testForm">
+                <p><strong>1. ¿Fumas regularmente?</strong></p>
+                <label><input type="radio" name="pregunta1" value="malo">Sí</label><br>
+                <label><input type="radio" name="pregunta1" value="bueno">No</label>
+
+                <p><strong>2. ¿Consumes alcohol con frecuencia?</strong></p>
+                <label><input type="radio" name="pregunta2" value="malo">Sí</label><br>
+                <label><input type="radio" name="pregunta2" value="bueno">No</label>
+
+                <p><strong>3. ¿Te rodeas de personas que te influencian de manera negativa?</strong></p>
+                <label><input type="radio" name="pregunta3" value="malo">Sí</label><br>
+                <label><input type="radio" name="pregunta3" value="bueno">No</label>
+
+                <p><strong>4. ¿Tienes hábitos de vida saludables (como hacer ejercicio regularmente)?</strong></p>
+                <label><input type="radio" name="pregunta4" value="bueno">Sí</label><br>
+                <label><input type="radio" name="pregunta4" value="malo">No</label>
+
+                <p><strong>5. ¿Manejas bien tus emociones en momentos difíciles?</strong></p>
+                <label><input type="radio" name="pregunta5" value="bueno">Sí</label><br>
+                <label><input type="radio" name="pregunta5" value="malo">No</label>
+
+                <button type="submit">Ver Resultado</button>
+            </form>
+
+            <div id="resultado" class="result"></div>
+        </div>
+
+        <footer>
+            © 2024 Cómo no ser como Lupo. Todos los derechos reservados.
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Variables para contar respuestas
+            let malasDecisiones = 0;
+            let buenasDecisiones = 0;
+
+            // Obtener las respuestas del formulario
+            const respuestas = document.querySelectorAll('input[type="radio"]:checked');
+            
+            respuestas.forEach(function(respuesta) {
+                if (respuesta.value === 'malo') {
+                    malasDecisiones++;
+                } else {
+                    buenasDecisiones++;
+                }
+            });
+
+            // Mostrar el resultado según las respuestas
+            const resultadoDiv = document.getElementById('resultado');
+            if (malasDecisiones > buenasDecisiones) {
+                resultadoDiv.textContent = '¡Cuidado! Estás siguiendo los pasos de José Pino Lupo. Reflexiona sobre tus decisiones y empieza a tomar un camino más saludable.';
+                resultadoDiv.className = 'result bad-result';
+            } else {
+                resultadoDiv.textContent = '¡Bien hecho! Estás tomando buenas decisiones en tu vida. Sigue por este camino y mantén hábitos saludables.';
+                resultadoDiv.className = 'result good-result';
+            }
+
+            resultadoDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
